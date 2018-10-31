@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Display Evens</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script type="text/javascript">
+        function printEvenNumbers() {
+            var start = document.getElementById("startingNumber").value;
+            var end = document.getElementById("endingNumber").value;
+            var step = document.getElementById("step").value;
+            start = Number(start);
+            end = Number(end);
+            step = Number(step);
+            if (step < 1) {
+                alert("Step must be positive number");
+                return;
+            }
+            if (start >= end || start === end) {
+                alert("End must be larger than start.");
+                return;
+            }
+            for (var i = start; i < end; i = i + step) {
+                if (i % 2 == 0) {
+                    document.getElementById("EvenNumbers").innerText += (i + "\n");
+                }
+            };
+            document.getElementById("start").innerText = start;
+            document.getElementById("end").innerText = end;
+            document.getElementById("steps").innerText = step;
+
+}
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Sample</h1>
+        <form name="evenNumbers" onsubmit="return validateItems();" 
+              onreset="resetForm();" class="form-block">
+            <div class="form-group">
+                <label for="startingNumber">Starting Number</label>
+                <input type="number" class="form-control" id="startingNumber" />
+            </div>
+            <div class="form-group">
+                <label for="endingNumber">Ending Number</label>
+                <input type="number" class="form-control" id="endingNumber" />
+            </div>
+            <div class="form-group">
+                <label for="step">Step</label>
+                <input type="number" class="form-control" id="step" />
+            </div>
+        </form>
+        <button type="submit" id="submitButton" class="btn btn-default" onclick="printEvenNumbers()">Display Evens</button>
+        <div id="resultText">Here are the even numbers between <span id="start"></span> and <span id="end"></span> by <span id="steps"></span>'s:</div>
+        <div id="EvenNumbers"></div>
+    </div>
+</body>
+</html>
